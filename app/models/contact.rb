@@ -9,7 +9,7 @@ class Contact < ApplicationRecord
 		super(
 			root: true,
 			methods: :author,
-			include: :kind
+			include: {kind: { only: :description}}
 		)
 	end
 end
