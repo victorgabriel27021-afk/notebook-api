@@ -1,17 +1,9 @@
 namespace :dev do
   desc "Configura o ambiente de desenvolvimento"
   task setup: :environment do
-    puts "Cadastrando os contatos..."
+    
+   #############################################
 
-    100.times do
-      Contact.create!(
-        name: Faker::Name.name,
-        email: Faker::Internet.email,
-        birthdate: Faker::Date.between(from: 44.years.ago, to: 18.years.ago)
-      )
-    end
-
-    puts "Contatos cadastrados!"
     puts "Cadastrando os tipos de contatos..."
 
     kinds = %w(Amigo Comercial Conhecido)
@@ -23,5 +15,20 @@ namespace :dev do
     end
 
     puts "Tipos de contatos cadastrados!"
+
+    #############################################
+
+    puts "Cadastrando os contatos..."
+
+    100.times do
+      Contact.create!(
+        name: Faker::Name.name,
+        email: Faker::Internet.email,
+        birthdate: Faker::Date.between(from: 44.years.ago, to: 18.years.ago),
+        kind: Kind.all.sample
+      )
+    end
+
+    puts "Contatos cadastrados!"
   end
 end
