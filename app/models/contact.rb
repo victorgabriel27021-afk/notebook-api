@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
 	belongs_to :kind
+	has_many :phones
 
 	def birthdate_br
 		I18n.l(self.birthdate) unless self.birthdate.blank?
@@ -15,6 +16,7 @@ class Contact < ApplicationRecord
 			methods: :author,
 			include: {kind: { only: :description}}
 		)
+	end
 
 	def hello
 		I18n.t('hello')
