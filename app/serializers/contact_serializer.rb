@@ -9,7 +9,7 @@ class ContactSerializer < ActiveModel::Serializer
   has_one :address
 
   #link(:self) { contact_url(object.id) }
-  #ink(:kind) {kind_url(object.kind.id)}
+  #link(:kind) {kind_url(object.kind.id)}
 
   def author
     "Victor"
