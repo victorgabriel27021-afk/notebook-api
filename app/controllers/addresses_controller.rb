@@ -1,6 +1,10 @@
 class AddressesController < ApplicationController
 	before_action :set_contact
 
+	def destroy
+		@contact.address.destroy
+	end
+
 	def create
 		@contact.address = Address.new(address_params)
 		if @contact.save
